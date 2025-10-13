@@ -1,0 +1,59 @@
+{
+  "server": {
+    "port": 3000,
+    "cacheDuration": 600000,
+    "timeout": 15000
+  },
+  "display": {
+    "displayInterval": 3000,
+    "updateInterval": 600000,
+    "minUpdateInterval": 120000
+  },
+  "api": {
+    "sourceUrl": "http://190.0.152.194:8080/alturas/web/user/alturas",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+  },
+  "puertos": [
+    {
+      "nombre": "COLÓN",
+      "id": "colon",
+      "region": "Entre Ríos"
+    },
+    {
+      "nombre": "CONCEPCIÓN DEL URUGUAY", 
+      "id": "concepcion",
+      "region": "Entre Ríos"
+    },
+    {
+      "nombre": "CONCORDIA",
+      "id": "concordia",
+      "region": "Entre Ríos"
+    },
+    {
+      "nombre": "SALTO",
+      "id": "salto",
+      "region": "Uruguay"
+    },
+    {
+      "nombre": "PAYSANDÚ",
+      "id": "paysandu",
+      "region": "Uruguay"
+    },
+    {
+      "nombre": "FRAY BENTOS",
+      "id": "fraybentos",
+      "region": "Uruguay"
+    }
+  ],
+  "themes": {
+    "default": {
+      "name": "Río Azul",
+      "primary": "#1e3c72",
+      "secondary": "#2a5298", 
+      "accent": "#87CEEB",
+      "error": "#ff6b6b",
+      "success": "#4ecdc4",
+      "warning": "#ffe66d"
+    }
+  }
+}
