@@ -1,5 +1,7 @@
 # 🌊 Rio Uruguay Monitor
 
+![preview](https://github.com/user-attachments/assets/47ab8099-4b9e-4945-a415-18f218521e11)
+
 Sistema de monitoreo en tiempo real de las alturas del Río Uruguay basado en datos oficiales de CARU (Comisión Administradora del Río Uruguay).
 
 ## 📊 Características
