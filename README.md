@@ -36,6 +36,9 @@ npm start
 - **API**: http://localhost:3000/api/rio-data
 - **Datos CARU**: http://localhost:3000/caru-data.html
 
+- ![preview2](https://github.com/user-attachments/assets/c43e3406-2336-4ec1-a1fc-8b1029b55724)
+
+
 ## 📡 API Endpoints
 
 ### GET /api/rio-data
