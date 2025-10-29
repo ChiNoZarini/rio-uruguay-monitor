@@ -4,9 +4,21 @@ const cheerio = require('cheerio');
 const cors = require('cors');
 const cron = require('node-cron');
 const path = require('path');
+const fs = require('fs');
+
+// Cargar configuración
+let config;
+try {
+    const configPath = path.join(__dirname, 'config.json');
+    const configFile = fs.readFileSync(configPath, 'utf8');
+    config = JSON.parse(configFile);
+} catch (error) {
+    console.error('Error al cargar el archivo de configuración:', error);
+    process.exit(1);
+}
 
 const app = express();
-const PORT = 3000;
+const PORT = config.server.port || 3000;
 
 // Middleware
 app.use(cors());
@@ -20,9 +32,9 @@ let isUpdating = false;
 let nextScheduledUpdate = null;
 
 // Configuración de horarios de actualización CARU
-const CARU_UPDATE_HOURS = [0, 12]; // CARU actualiza a las 00:00 y 12:00
-const UPDATE_DELAY_MINUTES = 5; // Esperamos 5 minutos después de la actualización de CARU
-const CACHE_DURATION = 12 * 60 * 60 * 1000; // 12 horas (hasta próxima actualización programada)
+const CARU_UPDATE_HOURS = config.scheduler.caruUpdateHours; // CARU actualiza a las 00:00 y 12:00
+const UPDATE_DELAY_MINUTES = config.scheduler.updateDelayMinutes; // Esperamos 5 minutos después de la actualización de CARU
+const CACHE_DURATION = config.server.cacheDuration; // 12 horas (hasta próxima actualización programada)
 
 // Lista de puertos del Río Uruguay basada en los datos reales de CARU
 const PUERTOS_MAP = {
@@ -159,10 +171,10 @@ function isCacheValid() {
 async function scrapeRiverData() {
     try {
         console.log('🌊 Obteniendo datos reales de CARU...');
-        const response = await axios.get('http://190.0.152.194:8080/alturas/web/user/alturas', {
-            timeout: 15000,
+        const response = await axios.get(config.api.sourceUrl, {
+            timeout: config.server.timeout || 15000,
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                'User-Agent': config.api.userAgent,
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                 'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
                 'Accept-Encoding': 'gzip, deflate',
@@ -459,7 +471,7 @@ function initializeScheduledUpdates() {
         }
     }, {
         scheduled: true,
-        timezone: "America/Argentina/Buenos_Aires"
+        timezone: config.scheduler.timezone
     });
     
     console.log('✅ Cron jobs programados correctamente (timezone: America/Argentina/Buenos_Aires)');

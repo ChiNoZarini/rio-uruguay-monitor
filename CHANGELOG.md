@@ -1,44 +1,61 @@
-# 📝 Changelog
+# Changelog
 
-Todos los cambios notables de este proyecto serán documentados en este archivo.
+Todos los cambios notables en este proyecto serán documentados en este archivo.
+
+El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/),
+y este proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).
 
 ## [1.1.0] - 2024-01-15
 
-### ✨ Agregado
-- Sistema completo de monitoreo del Río Uruguay
-- API REST para acceso programático a datos
-- Interfaz web responsive con visualización en tiempo real
-- Cache inteligente con actualización automática
-- Soporte para 20+ puertos del Río Uruguay
+### 🎉 Añadido
+- Sistema de cache inteligente con duración de 12 horas
+- Actualización automática programada (00:05 y 12:05)
+- Configuración avanzada mediante archivo `config.json`
+- Soporte para múltiples temas visuales
+- API REST para acceso a datos programático
+- Estados visuales por rangos de altura
+- Script de inicio automático para Windows (`start.bat`)
+- Monitoreo de 16 puertos del Río Uruguay
+- Soporte para datos de Argentina, Uruguay y Brasil
+
+### 🔧 Mejorado
+- Optimización del rendimiento con sistema de cache
+- Interfaz de usuario más moderna y responsive
+- Mejor manejo de errores y timeouts
 - Documentación completa del proyecto
+- Estructura de configuración más flexible
 
-### 🔧 Características Técnicas
-- Servidor Express.js con CORS habilitado
-- Web scraping de datos oficiales de CARU
-- Programación automática con node-cron
-- Tres interfaces web diferentes:
-  - Interfaz principal con servidor
-  - Versión standalone
-  - Vista específica de datos CARU
+### 🐛 Corregido
+- Problemas de sincronización con horarios de CARU
+- Manejo mejorado de conexiones timeout
+- Validación de datos de entrada más robusta
 
-### 📊 Datos Monitoreados
-- **Tramo Superior**: Monte Caseros, Bella Unión, Mocoretá, Artigas, Paso de los Libres, Uruguayana
-- **Tramo Medio**: Federación, Salto Grande, Salto, Concordia, Colón
-- **Tramo Inferior**: Concepción del Uruguay, Paysandú, Fray Bentos, Gualeguaychú, San Javier
+## [1.0.0] - 2024-01-01
 
-### 🕐 Horarios de Actualización
-- Actualización automática: 00:00 y 12:00 UTC (siguiendo horarios CARU)
-- Retraso del sistema: 5 minutos después de cada actualización
-- Cache: 12 horas de duración
+### 🎉 Añadido
+- Versión inicial del sistema de monitoreo
+- Obtención de datos básicos de CARU
+- Interfaz web simple para visualización
+- Servidor Express básico
+- Configuración inicial de puertos
 
-## [1.0.0] - 2024-01-14
-
-### ✨ Initial Release
-- Versión inicial del proyecto
-- Configuración básica del repositorio
+### 📝 Notas
+- Primera versión funcional del sistema
+- Datos obtenidos directamente de la fuente oficial CARU
+- Soporte inicial para principales puertos del Río Uruguay
 
 ---
 
-### Formato
-Este changelog sigue el formato de [Keep a Changelog](https://keepachangelog.com/es/1.0.0/),
-y este proyecto se adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## Tipos de cambios
+
+- `🎉 Añadido` para nuevas funcionalidades
+- `🔧 Mejorado` para cambios en funcionalidades existentes
+- `🐛 Corregido` para corrección de bugs
+- `🗑️ Eliminado` para funcionalidades eliminadas
+- `🔒 Seguridad` para vulnerabilidades
+
+## Enlaces
+
+- [Sin lanzar]: https://github.com/ChiNoZarini/rio-uruguay-monitor/compare/v1.1.0...HEAD
+- [1.1.0]: https://github.com/ChiNoZarini/rio-uruguay-monitor/compare/v1.0.0...v1.1.0
+- [1.0.0]: https://github.com/ChiNoZarini/rio-uruguay-monitor/releases/tag/v1.0.0

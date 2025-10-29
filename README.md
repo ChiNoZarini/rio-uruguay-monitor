@@ -1,22 +1,30 @@
 # 🌊 Rio Uruguay Monitor
 
-Sistema de monitoreo en tiempo real de las alturas del Río Uruguay basado en datos oficiales de CARU (Comisión Administradora del Río Uruguay).
+Sistema de monitoreo en tiempo real de las alturas del Río Uruguay con datos oficiales de CARU (Comisión Administradora del Río Uruguay).
 
-## 📊 Características
+## 📋 Descripción
 
-- **Datos en tiempo real** de todos los puertos del Río Uruguay
-- **Interfaz web responsive** con visualización clara
-- **API REST** para acceso programático a los datos
-- **Actualización automática** siguiendo los horarios de CARU (00:00 y 12:00 UTC)
-- **Cache inteligente** para optimizar rendimiento
+Este proyecto proporciona una interfaz web moderna y responsive para monitorear las alturas hidrométricas del Río Uruguay en múltiples puertos, desde Monte Caseros hasta Nueva Palmira. Los datos se obtienen directamente del sistema oficial de CARU y se actualizan automáticamente cada 12 horas.
 
-## 🚀 Instalación y Uso
+## ✨ Características
+
+- 🔄 **Actualización automática**: Datos sincronizados con CARU a las 00:05 y 12:05
+- 📱 **Diseño responsive**: Optimizado para dispositivos móviles y desktop
+- 🎨 **Interfaz moderna**: Dashboard con temas personalizables
+- 📊 **Visualización clara**: Estados visuales por rangos de altura
+- ⚡ **Cache inteligente**: Optimización de rendimiento con cache de 12 horas
+- 🔍 **Múltiples puertos**: Monitoreo de 16 puertos a lo largo del río
+- 🌍 **Cobertura trinacional**: Argentina, Uruguay y Brasil
+
+## 🚀 Instalación
 
 ### Prerrequisitos
+
 - Node.js >= 14.0.0
 - npm >= 6.0.0
 
-### Instalación
+### Instalación rápida
+
 ```bash
 # Clonar el repositorio
 git clone https://github.com/ChiNoZarini/rio-uruguay-monitor.git
@@ -29,111 +37,174 @@ npm install
 npm start
 ```
 
-### Acceso
-- **Interfaz web**: http://localhost:3000
-- **API**: http://localhost:3000/api/rio-data
-- **Datos CARU**: http://localhost:3000/caru-data.html
+### Instalación en Windows (archivo batch)
 
-## 📡 API Endpoints
+```bash
+# Ejecutar el archivo start.bat
+start.bat
+```
 
-### GET /api/rio-data
-Obtiene todos los datos actuales de alturas del río.
+## 📖 Uso
 
-**Respuesta:**
+1. **Iniciar el servidor**:
+   ```bash
+   npm start
+   ```
+
+2. **Abrir en el navegador**:
+   ```
+   http://localhost:3000
+   ```
+
+3. **Ver datos**:
+   - El dashboard muestra automáticamente las alturas de todos los puertos
+   - Los datos se actualizan automáticamente cada 12 horas
+   - El estado visual indica los niveles de alerta por colores
+
+## 🔧 Configuración
+
+El archivo `config.json` permite personalizar:
+
+- **Puerto del servidor** (por defecto: 3000)
+- **Intervalos de actualización**
+- **Horarios de sincronización con CARU**
+- **Configuración de puertos monitoreados**
+- **Temas visuales**
+
+### Ejemplo de configuración:
+
 ```json
 {
-  "success": true,
-  "lastUpdate": "2024-01-15T12:05:00.000Z",
-  "data": [
-    {
-      "puerto": "Monte Caseros",
-      "altura": "2.45",
-      "fecha": "15/01/2024",
-      "hora": "12:00"
-    }
-  ]
+  "server": {
+    "port": 3000,
+    "cacheDuration": 43200000
+  },
+  "scheduler": {
+    "caruUpdateHours": [0, 12],
+    "updateDelayMinutes": 5
+  }
 }
 ```
 
-## 🗺️ Puertos Monitoreados
+## 🏠 Puertos Monitoreados
 
-El sistema monitorea **20 puertos** a lo largo del Río Uruguay:
+El sistema monitorea 16 puertos estratégicos:
 
-**Tramo Superior:**
-- Monte Caseros
+### Argentina 🇦🇷
+- Monte Caseros (Corrientes)
+- Paso de los Libres (Corrientes)
+- Concordia (Entre Ríos)
+- Colón (Entre Ríos)
+- Concepción del Uruguay (Entre Ríos)
+- Puerto Yeruá (Entre Ríos)
+- Constitución (Entre Ríos)
+- San Javier (Entre Ríos)
+- Puerto Unzué (Entre Ríos)
+- Gualeguaychú (Entre Ríos)
+
+### Uruguay 🇺🇾
 - Bella Unión
-- Mocoretá
 - Artigas
-- Paso de los Libres
-- Uruguayana
-
-**Tramo Medio:**
-- Federación / Federación Embalse
-- Salto Grande (Arriba y Abajo)
 - Salto
-- Concordia
-- Colón
-
-**Tramo Inferior:**
-- Concepción del Uruguay
-- Puerto Yeruá
 - Paysandú
 - Fray Bentos
-- Gualeguaychú
-- San Javier
-- Puerto Unzué
 
-## ⚙️ Configuración
+### Brasil 🇧🇷
+- Uruguayana
 
-El archivo `config.json` contiene la configuración del sistema:
+## 📡 API
+
+### Endpoints disponibles
+
+- `GET /api/data` - Obtener datos actuales de todos los puertos
+- `GET /api/status` - Estado del sistema y última actualización
+- `GET /` - Dashboard principal (interfaz web)
+
+### Ejemplo de respuesta API:
 
 ```json
 {
-  "port": 3000,
-  "cacheTimeout": 43200000,
-  "updateHours": [0, 12],
-  "delayMinutes": 5
+  "data": [
+    {
+      "puerto": "COLÓN",
+      "altura": "2.45",
+      "fecha": "2024-01-15",
+      "hora": "12:00",
+      "region": "Entre Ríos"
+    }
+  ],
+  "lastUpdate": "2024-01-15T12:05:00.000Z",
+  "nextUpdate": "2024-01-16T00:05:00.000Z"
 }
 ```
 
-## 🔄 Actualización de Datos
+## 🛠️ Scripts disponibles
 
-- **Horarios CARU**: 00:00 y 12:00 UTC
-- **Retraso del sistema**: 5 minutos después de cada actualización
-- **Cache**: 12 horas entre actualizaciones programadas
-- **Fuente**: Sitio web oficial de CARU
+```bash
+# Iniciar en producción
+npm start
 
-## 📱 Interfaces Disponibles
+# Iniciar en desarrollo (con nodemon)
+npm run dev
 
-1. **rio-display.html** - Interfaz principal con servidor
-2. **rio-display-standalone.html** - Versión independiente
-3. **caru-data.html** - Datos específicos de CARU
+# En Windows - inicio automático
+start.bat
+```
 
-## 🛠️ Tecnologías
+## 📁 Estructura del proyecto
 
-- **Backend**: Node.js + Express
-- **Web Scraping**: Axios + Cheerio
-- **Frontend**: HTML5 + CSS3 + JavaScript
-- **Programación**: node-cron
-- **CORS**: Habilitado para uso en diferentes dominios
+```
+rio-uruguay-monitor/
+├── config.json           # Configuración del sistema
+├── package.json          # Dependencias y metadata
+├── rio-server.js         # Servidor principal
+├── rio-display.html      # Dashboard web
+├── start.bat            # Script de inicio para Windows
+└── README.md            # Este archivo
+```
 
-## 📄 Licencia
+## 🔄 Funcionamiento
 
-MIT License - Consulta el archivo LICENSE para más detalles.
+1. **Sincronización**: CARU actualiza datos a las 00:00 y 12:00
+2. **Recolección**: Servidor obtiene datos a las 00:05 y 12:05
+3. **Cache**: Datos se mantienen en cache por 12 horas
+4. **Visualización**: Dashboard muestra información en tiempo real
+
+## 📊 Estados Visuales
+
+- 🟢 **Verde**: Altura normal
+- 🟡 **Amarillo**: Altura de precaución
+- 🟠 **Naranja**: Altura de alerta
+- 🔴 **Rojo**: Altura crítica
 
 ## 🤝 Contribuir
 
-1. Haz fork del proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
+1. Fork el proyecto
+2. Crear rama para feature (`git checkout -b feature/AmazingFeature`)
+3. Commit cambios (`git commit -m 'Add AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abrir Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detalles.
+
+## 🙏 Reconocimientos
+
+- **CARU** - Por proporcionar los datos oficiales del Río Uruguay
+- **Comisión Administradora del Río Uruguay** - Fuente oficial de datos
 
 ## 📞 Soporte
 
-Para reportar problemas o solicitar funcionalidades, abre un [issue](https://github.com/ChiNoZarini/rio-uruguay-monitor/issues) en GitHub.
+Para reportar bugs o solicitar features:
+- 🐛 **Issues**: [GitHub Issues](https://github.com/ChiNoZarini/rio-uruguay-monitor/issues)
+- 📧 **Email**: chinozarini@example.com
+
+## 🔗 Enlaces útiles
+
+- [CARU Oficial](http://www.caru.org.uy/)
+- [Datos en tiempo real](http://190.0.152.194:8080/alturas/web/user/alturas)
 
 ---
 
-**Desarrollado por**: [ChiNoZarini](https://github.com/ChiNoZarini)  
-**Fuente de datos**: [CARU - Comisión Administradora del Río Uruguay](https://www.caru.org.uy)
+⭐ Si este proyecto te resulta útil, ¡dale una estrella en GitHub!
