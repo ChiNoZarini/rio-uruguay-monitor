@@ -202,12 +202,10 @@ Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detall
 
 Para reportar bugs o solicitar features:
 - 🐛 **Issues**: [GitHub Issues](https://github.com/ChiNoZarini/rio-uruguay-monitor/issues)
-- 📧 **Email**: chinozarini@example.com
 
 ## 🔗 Enlaces útiles
 
 - [CARU Oficial](http://www.caru.org.uy/)
-- [Datos en tiempo real](http://190.0.152.194:8080/alturas/web/user/alturas)
 
 ---
 
