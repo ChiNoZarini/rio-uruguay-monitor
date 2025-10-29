@@ -41,7 +41,6 @@ npm start
 
 ### Instalación en Windows (archivo batch)
 
-<<<<<<< HEAD
 ```bash
 # Ejecutar el archivo start.bat
 start.bat
@@ -212,9 +211,7 @@ Para reportar bugs o solicitar features:
 
 ---
 
-<<<<<<< HEAD
 ⭐ Si este proyecto te resulta útil, ¡dale una estrella en GitHub!
-=======
+
 **Desarrollado por**: [ChiNoZarini](https://github.com/ChiNoZarini)  
 **Fuente de datos**: [CARU - Comisión Administradora del Río Uruguay](https://www.caru.org.uy)
->>>>>>> a00b12985acd378dd17cd4082e5b33ac5a548a13
