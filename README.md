@@ -1,5 +1,7 @@
 # 🌊 Rio Uruguay Monitor
 
+![preview](https://github.com/user-attachments/assets/47ab8099-4b9e-4945-a415-18f218521e11)
+
 Sistema de monitoreo en tiempo real de las alturas del Río Uruguay con datos oficiales de CARU (Comisión Administradora del Río Uruguay).
 
 ## 📋 Descripción
@@ -39,10 +41,13 @@ npm start
 
 ### Instalación en Windows (archivo batch)
 
+<<<<<<< HEAD
 ```bash
 # Ejecutar el archivo start.bat
 start.bat
 ```
+
+![preview2](https://github.com/user-attachments/assets/c43e3406-2336-4ec1-a1fc-8b1029b55724)
 
 ## 📖 Uso
 
@@ -207,4 +212,9 @@ Para reportar bugs o solicitar features:
 
 ---
 
+<<<<<<< HEAD
 ⭐ Si este proyecto te resulta útil, ¡dale una estrella en GitHub!
+=======
+**Desarrollado por**: [ChiNoZarini](https://github.com/ChiNoZarini)  
+**Fuente de datos**: [CARU - Comisión Administradora del Río Uruguay](https://www.caru.org.uy)
+>>>>>>> a00b12985acd378dd17cd4082e5b33ac5a548a13
